@@ -94,7 +94,7 @@ python src/load.py
 - Structuring and storing data in a relational database  
 - Querying and analyzing data using SQL and Python
 
----h
+---
 
 ## 📄 License
 

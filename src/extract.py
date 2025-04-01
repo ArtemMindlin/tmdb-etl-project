@@ -121,9 +121,9 @@ def main() -> None:
     upcoming_data = fetch_movies("/movie/upcoming", max_page_limit=501, sleep_time=0.3)
 
     # Save the data to JSON files
-    save_json(popular_data, "data/raw/tmdb_popular.json")
-    save_json(top_rated_data, "data/raw/tmdb_top_rated.json")
-    save_json(upcoming_data, "data/raw/tmdb_upcoming.json")
+    save_json(popular_data, "../data/raw/tmdb_popular.json")
+    save_json(top_rated_data, "../data/raw/tmdb_top_rated.json")
+    save_json(upcoming_data, "../data/raw/tmdb_upcoming.json")
 
 
 if __name__ == "__main__":

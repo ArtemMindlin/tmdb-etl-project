@@ -18,7 +18,7 @@ Create a workflow that:
 ## ⚙️ Technologies Used
 
 - **Python 3**  
-  - Libraries: `requests`, `pandas`, `json`, `sqlite3`
+  - Libraries: `requests`, `pandas`, `json`, `sqlite3`, `time`, `os`, `dotenv`
 - **SQL**  
   - SQLite for local data storage
 - **REST API**  

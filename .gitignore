@@ -1,0 +1,15 @@
+# Do not commit secrets or sensitive data
+.env
+
+# Raw extracted data
+data/raw/
+
+# Python cache and compiled files
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# macOS system files
+.DS_Store

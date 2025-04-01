@@ -16,11 +16,15 @@ import requests
 import json
 import time
 import os
+from dotenv import load_dotenv
 
 # ----------------------------------------------------------------
 # API Configuration
 # ----------------------------------------------------------------
-API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZTdmZGEzYjlkMmY4ZDVmN2RmMGY2YzYwM2I2NjNhMCIsIm5iZiI6MTc0MzM1ODU1MC4wMzYsInN1YiI6IjY3ZTk4YTU2YWY3NTJhM2IyNGY2ZjQxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.uqBY8YEuA3XLuvi7HbHnQik8hUTxR6u36BNRxDD-InM"
+
+
+load_dotenv()
+API_KEY = os.getenv("TMDB_API_KEY")
 HEADERS = {"accept": "application/json", "Authorization": f"Bearer {API_KEY}"}
 
 

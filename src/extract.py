@@ -31,6 +31,30 @@ HEADERS = {"accept": "application/json", "Authorization": f"Bearer {API_KEY}"}
 # ----------------------------------------------------------------
 # Helper Functions
 # ----------------------------------------------------------------
+
+
+def fetch_genres() -> dict:
+    """
+    Fetch the list of movie genres from the TMDb API.
+
+    Returns:
+        dict: A dictionary containing the genre list, or an empty dict if the request fails.
+    """
+    url = "https://api.themoviedb.org/3/genre/movie/list?language=en"
+
+    try:
+        response = requests.get(url, headers=HEADERS, timeout=10)
+        if response.status_code == 200:
+            print("✅ Genres fetched successfully.")
+            return response.json()
+        else:
+            print(f"❌ Failed to fetch genres. Status code: {response.status_code}")
+            return {}
+    except requests.exceptions.RequestException as e:
+        print(f"❌ Error fetching genres: {e}")
+        return {}
+
+
 def fetch_total_pages(endpoint_url: str) -> int:
     """
     Fetch the total number of pages from the given endpoint URL.
@@ -44,7 +68,6 @@ def fetch_total_pages(endpoint_url: str) -> int:
     response = requests.get(endpoint_url, headers=HEADERS)
     data = response.json()
     return data["total_pages"]
-
 
 def fetch_movies(
     endpoint: str, max_page_limit: int = 501, sleep_time: float = 0.3
@@ -120,10 +143,15 @@ def main() -> None:
     print("Fetching Upcoming Movies...")
     upcoming_data = fetch_movies("/movie/upcoming", max_page_limit=501, sleep_time=0.3)
 
+    # Fetch Genres
+    print("Fetching Genres...")
+    genres = fetch_genres()
+
     # Save the data to JSON files
     save_json(popular_data, "../data/raw/tmdb_popular.json")
     save_json(top_rated_data, "../data/raw/tmdb_top_rated.json")
     save_json(upcoming_data, "../data/raw/tmdb_upcoming.json")
+    save_json(genres, "../data/raw/genres.json")
 
 
 if __name__ == "__main__":

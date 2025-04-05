@@ -69,6 +69,7 @@ def fetch_total_pages(endpoint_url: str) -> int:
     data = response.json()
     return data["total_pages"]
 
+
 def fetch_movies(
     endpoint: str, max_page_limit: int = 501, sleep_time: float = 0.3
 ) -> dict:
@@ -128,7 +129,7 @@ def save_json(data: dict, filepath: str) -> None:
 # ----------------------------------------------------------------
 # Main Extraction Process
 # ----------------------------------------------------------------
-def main() -> None:
+def extract_data() -> dict:
     # Fetch Popular Movies
     print("Fetching Popular Movies...")
     popular_data = fetch_movies("/movie/popular", max_page_limit=501, sleep_time=0.2)
@@ -153,6 +154,13 @@ def main() -> None:
     save_json(upcoming_data, "../data/raw/tmdb_upcoming.json")
     save_json(genres, "../data/raw/genres.json")
 
+    return {
+        "popular": popular_data,
+        "top_rated": top_rated_data,
+        "upcoming": upcoming_data,
+        "genres": genres,
+    }
+
 
 if __name__ == "__main__":
-    main()
+    extract_data()

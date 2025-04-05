@@ -141,7 +141,7 @@ def save_movies(df, name):
 # ----------------------------------------------------------------
 # Main Transformation Flow
 # ----------------------------------------------------------------
-def main():
+def transform_data():
     # Load raw JSON data
     with open("../data/raw/tmdb_popular.json") as f:
         pop_data = json.load(f)
@@ -189,9 +189,16 @@ def main():
     save_movies(df_upc_final, "upcoming")
     save_movies(df_genres, "genres")
 
+    return {
+        "popular": df_pop_final,
+        "top_rated": df_topr_final,
+        "upcoming": df_upc_final,
+        "genres": df_genres,
+    }
+
 
 # ----------------------------------------------------------------
 # Run
 # ----------------------------------------------------------------
 if __name__ == "__main__":
-    main()
+    transform_data()

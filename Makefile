@@ -20,18 +20,19 @@ clean:
 	rm -f data/processed/*.parquet
 
 setup:
-	@echo "📦 Creando entorno virtual y preparando el proyecto..."
+	@echo "📦 Creating the vrtuall envvironment and preparing the projet..."
 	python3 -m venv venv
-	@echo "✅ Entorno virtual creado: 'venv/'"
-	@echo "🐍 Activando entorno y ejecutando instalación de dependencias..."
+	@echo "✅ Virtual envvironment created: 'venv/'"
+	@echo "🐍 Activating virtuel environment and executing nstalation of dependencies..."
 	./venv/bin/pip install --upgrade pip
 	./venv/bin/pip install -r requirements.txt
-	@echo "✅ Entorno configurado correctamente. Usa 'source venv/bin/activate' para activarlo."
+	@echo "✅ Environment created correctly. Use 'source venv/bin/activate' to activate it."
 
 help:
 	@echo "Comandos disponibles:"
-	@echo "  make run        - Ejecuta el pipeline completo (main.py)"
-	@echo "  make extract    - Ejecuta solo la extracción"
-	@echo "  make transform  - Ejecuta solo la transformación"
-	@echo "  make load       - Ejecuta solo la carga desde CSV"
-	@echo "  make clean      - Borra la base de datos y los archivos procesados"
+	@echo "  make run        - Execute the entire ETL (main.py)"
+	@echo "  make extract    - Execute only the extration"
+	@echo "  make transform  - Execute only the transformation"
+	@echo "  make load       - Execute only the load"
+	@echo "  make clean      - Delete the database and all the data"
+	@echo "  make setup      - Setup the entire envvironment"

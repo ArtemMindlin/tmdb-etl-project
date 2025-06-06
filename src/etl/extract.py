@@ -129,7 +129,9 @@ def save_json(data: dict, filepath: str) -> None:
 # ----------------------------------------------------------------
 # Main Extraction Process
 # ----------------------------------------------------------------
-def extract_data() -> dict:
+
+
+def main():
     # Fetch Popular Movies
     print("Fetching Popular Movies...")
     popular_data = fetch_movies("/movie/popular", max_page_limit=501, sleep_time=0.2)
@@ -149,18 +151,37 @@ def extract_data() -> dict:
     genres = fetch_genres()
 
     # Save the data to JSON files
-    save_json(popular_data, "../data/raw/tmdb_popular.json")
-    save_json(top_rated_data, "../data/raw/tmdb_top_rated.json")
-    save_json(upcoming_data, "../data/raw/tmdb_upcoming.json")
-    save_json(genres, "../data/raw/genres.json")
+    save_json(popular_data, "../../data/raw/tmdb_popular.json")
+    save_json(top_rated_data, "../../data/raw/tmdb_top_rated.json")
+    save_json(upcoming_data, "../../data/raw/tmdb_upcoming.json")
+    save_json(genres, "../../data/raw/genres.json")
 
-    return {
-        "popular": popular_data,
-        "top_rated": top_rated_data,
-        "upcoming": upcoming_data,
-        "genres": genres,
-    }
+
+def extract_data():
+    # Fetch Popular Movies
+    print("Fetching Popular Movies...")
+    popular_data = fetch_movies("/movie/popular", max_page_limit=501, sleep_time=0.2)
+
+    # Fetch Top Rated Movies
+    print("Fetching Top Rated Movies...")
+    top_rated_data = fetch_movies(
+        "/movie/top_rated", max_page_limit=501, sleep_time=0.3
+    )
+
+    # Fetch Upcoming Movies
+    print("Fetching Upcoming Movies...")
+    upcoming_data = fetch_movies("/movie/upcoming", max_page_limit=501, sleep_time=0.3)
+
+    # Fetch Genres
+    print("Fetching Genres...")
+    genres = fetch_genres()
+
+    # Save the data to JSON files
+    save_json(popular_data, "data/raw/tmdb_popular.json")
+    save_json(top_rated_data, "data/raw/tmdb_top_rated.json")
+    save_json(upcoming_data, "data/raw/tmdb_upcoming.json")
+    save_json(genres, "data/raw/genres.json")
 
 
 if __name__ == "__main__":
-    extract_data()
+    main()

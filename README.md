@@ -8,20 +8,20 @@ This project implements a complete ETL pipeline using the public [The Movie Data
 
 Create a workflow that:
 
-1. **Extracts** data from the TMDb REST API  
-2. **Transforms** the raw data into a clean and structured format using Python (`pandas`)  
-3. **Loads** the data into a relational database (SQLite)  
+1. **Extracts** data from the TMDb REST API
+2. **Transforms** the raw data into a clean and structured format using Python (`pandas`)
+3. **Loads** the data into a relational database (SQLite)
 4. **Queries and analyzes** the data using SQL and Python
 
 ---
 
 ## ⚙️ Technologies Used
 
-- **Python 3**  
+- **Python 3**
   - Libraries: `requests`, `pandas`, `json`, `sqlite3`, `time`, `os`, `dotenv`
-- **SQL**  
+- **SQL**
   - SQLite for local data storage
-- **REST API**  
+- **REST API**
   - TMDb `/movie/top_rated` endpoint
 - **(Optional)** Jupyter Notebook for exploration and visualization
 
@@ -36,13 +36,14 @@ tmdb-etl-project/
 │   └── processed/         # Cleaned CSVs ready for loading
 ├── notebooks/
 │   └── exploratory.ipynb  # Data analysis and visualizations
-├── src/
+├── src/etl
 │   ├── extract.py         # Fetches data from the TMDb API
 │   ├── transform.py       # Cleans and transforms data with pandas
 │   └── load.py            # Loads data into an SQLite database
 ├── sql/
 │   └── queries.sql        # SQL queries for exploration and analysis
 ├── requirements.txt       # Project dependencies
+├── main.py		   # Main file
 └── README.md              # Project overview
 ```
 
@@ -63,12 +64,18 @@ cd tmdb-etl-project
 pip install -r requirements.txt
 ```
 
-### 3. Run the ETL pipeline:
+### 3.1 Run the entire ETL pipeline:
 
 ```bash
-python src/extract.py
-python src/transform.py
-python src/load.py
+python main.py
+```
+
+### 3.2 Run individual scripts:
+
+```
+python src/etl/extract.py
+python src/etl/transform.py
+python src/etl/load.py
 ```
 
 ### 4. Explore the data:
@@ -80,18 +87,18 @@ python src/load.py
 
 ## 📊 Example Analyses
 
-- Top-rated movies by year  
-- Popularity trends over time  
-- Vote distributions by language  
+- Top-rated movies by year
+- Popularity trends over time
+- Vote distributions by language
 - Top 10 most voted movies
 
 ---
 
 ## 🧠 Key Takeaways
 
-- Fetching data from a public REST API  
-- Cleaning and transforming real-world data  
-- Structuring and storing data in a relational database  
+- Fetching data from a public REST API
+- Cleaning and transforming real-world data
+- Structuring and storing data in a relational database
 - Querying and analyzing data using SQL and Python
 
 ---
@@ -99,6 +106,3 @@ python src/load.py
 ## 📄 License
 
 This project is for educational purposes only. All data comes from TMDb and is subject to their [terms of use](https://www.themoviedb.org/documentation/api/terms-of-use).
-
-
-

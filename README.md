@@ -58,24 +58,24 @@ git clone https://github.com/your-username/tmdb-etl-project.git
 cd tmdb-etl-project
 ```
 
-### 2. Install the dependencies:
+### 2. Prepare repository setup:
 
 ```bash
-pip install -r requirements.txt
+make setup
 ```
 
 ### 3.1 Run the entire ETL pipeline:
 
 ```bash
-python main.py
+make run
 ```
 
 ### 3.2 Run individual scripts:
 
 ```
-python src/etl/extract.py
-python src/etl/transform.py
-python src/etl/load.py
+make extract
+make transform
+make load
 ```
 
 ### 4. Explore the data:

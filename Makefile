@@ -1,5 +1,5 @@
 # Variables
-PYTHON=python
+PYTHON=python3
 
 # Targets
 run:

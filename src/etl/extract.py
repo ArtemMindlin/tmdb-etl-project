@@ -180,7 +180,7 @@ def extract_data():
     save_json(popular_data, "data/raw/tmdb_popular.json")
     save_json(top_rated_data, "data/raw/tmdb_top_rated.json")
     save_json(upcoming_data, "data/raw/tmdb_upcoming.json")
-    save_json(genres, "data/raw/genres.json")
+    save_json(genres, " data/raw/genres.json")
 
 
 if __name__ == "__main__":
